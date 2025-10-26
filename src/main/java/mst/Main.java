@@ -6,14 +6,13 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String inputFile = "src/main/resources/input_large.json";
-        String outputFile = "src/main/resources/output_large.json";
+        String inputFile = "src/main/resources/input_medium.json";
+        String outputFile = "src/main/resources/output_medium.json";
 
         try {
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
             JsonObject jsonData = JsonParser.parseReader(new FileReader(inputFile)).getAsJsonObject();
             JsonArray graphsArray = jsonData.getAsJsonArray("graphs");
-
             JsonArray resultsArray = new JsonArray();
 
             for (JsonElement graphElem : graphsArray) {
@@ -74,6 +73,7 @@ public class Main {
             try (FileWriter writer = new FileWriter(outputFile)) {
                 gson.toJson(finalOutput, writer);
             }
+
 
             System.out.println("Results written to " + outputFile);
 

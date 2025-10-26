@@ -1,0 +1,47 @@
+graph MST_large {
+  node [shape=circle, style=filled, color=lightgray, fontname="Arial"];
+
+  A -- B [label="2"];
+  A -- C [label="5"];
+  B -- D [label="1"];
+  C -- E [label="3"];
+  D -- F [label="7"];
+  E -- F [label="4"];
+  E -- G [label="8"];
+  F -- H [label="2"];
+  G -- I [label="6"];
+  H -- I [label="1"];
+  I -- J [label="3"];
+  J -- K [label="9"];
+  K -- L [label="5"];
+  L -- M [label="2"];
+  M -- N [label="4"];
+  N -- O [label="6"];
+  O -- P [label="3"];
+  P -- Q [label="5"];
+  Q -- R [label="7"];
+  R -- S [label="2"];
+  S -- T [label="4"];
+
+  B -- D [color=red, penwidth=2.5];
+  A -- B [color=red, penwidth=2.5];
+  C -- E [color=red, penwidth=2.5];
+  F -- H [color=red, penwidth=2.5];
+  H -- I [color=red, penwidth=2.5];
+  L -- M [color=red, penwidth=2.5];
+  R -- S [color=red, penwidth=2.5];
+  S -- T [color=red, penwidth=2.5];
+  N -- O [color=red, penwidth=2.5];
+  O -- P [color=red, penwidth=2.5];
+  P -- Q [color=red, penwidth=2.5];
+  Q -- R [color=red, penwidth=2.5];
+  E -- F [color=red, penwidth=2.5];
+  K -- L [color=red, penwidth=2.5];
+  I -- J [color=red, penwidth=2.5];
+
+  label = "Minimum Spanning Tree — Large Graph";
+  labelloc = top;
+  fontsize = 18;
+  splines = true;
+  overlap = false;
+}

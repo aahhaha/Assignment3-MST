@@ -1,0 +1,33 @@
+graph MST_medium {
+  node [shape=circle, style=filled, color=lightgray, fontname="Arial"];
+
+  A -- B [label="4"];
+  A -- C [label="3"];
+  B -- C [label="2"];
+  B -- D [label="6"];
+  C -- E [label="5"];
+  D -- E [label="1"];
+  D -- F [label="7"];
+  E -- F [label="4"];
+  F -- G [label="3"];
+  G -- H [label="2"];
+  H -- I [label="5"];
+  I -- J [label="1"];
+  E -- H [label="8"];
+
+  D -- E [color=red, penwidth=2.5];
+  B -- C [color=red, penwidth=2.5];
+  A -- C [color=red, penwidth=2.5];
+  F -- G [color=red, penwidth=2.5];
+  G -- H [color=red, penwidth=2.5];
+  I -- J [color=red, penwidth=2.5];
+  C -- E [color=red, penwidth=2.5];
+  E -- F [color=red, penwidth=2.5];
+  H -- I [color=red, penwidth=2.5];
+
+  label = "Minimum Spanning Tree — Medium Graph";
+  labelloc = top;
+  fontsize = 18;
+  splines = true;
+  overlap = false;
+}
