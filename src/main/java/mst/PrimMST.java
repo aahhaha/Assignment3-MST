@@ -11,7 +11,6 @@ public class PrimMST {
         int V = graph.getVertices();
         boolean[] visited = new boolean[V];
         PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
-
         visited[0] = true;
         for (Edge e : graph.getEdges()) {
             if (e.getSrc() == 0 || e.getDest() == 0) pq.add(e);
