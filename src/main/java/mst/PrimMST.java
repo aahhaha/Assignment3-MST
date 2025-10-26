@@ -3,47 +3,62 @@ package mst;
 import java.util.*;
 
 public class PrimMST {
-    private final List<Edge> mstEdges = new ArrayList<>();
-    private double totalCost = 0;
+
+    private List<Edge> mstEdges = new ArrayList<>();
+    private double totalCost = 0.0;
+    private long executionTimeMs = 0;
     private int operationCount = 0;
 
     public void findMST(Graph graph) {
+        long start = System.nanoTime();
+
         int V = graph.getVertices();
         boolean[] visited = new boolean[V];
         PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
+
+        // начинаем с вершины 0
         visited[0] = true;
-        for (Edge e : graph.getEdges()) {
-            if (e.getSrc() == 0 || e.getDest() == 0) pq.add(e);
-        }
+        pq.addAll(graph.getAdj(0));
+        operationCount++;
 
         while (!pq.isEmpty() && mstEdges.size() < V - 1) {
             Edge edge = pq.poll();
             operationCount++;
-            int next = -1;
 
-            if (visited[edge.getSrc()] && !visited[edge.getDest()]) next = edge.getDest();
-            else if (visited[edge.getDest()] && !visited[edge.getSrc()]) next = edge.getSrc();
-            else continue;
+            int v = edge.getSrc();
+            int w = edge.getDest();
+
+            if (visited[v] && visited[w]) continue;
 
             mstEdges.add(edge);
             totalCost += edge.getWeight();
-            visited[next] = true;
 
-            for (Edge e : graph.getEdges()) {
-                if ((e.getSrc() == next && !visited[e.getDest()]) ||
-                        (e.getDest() == next && !visited[e.getSrc()])) {
-                    pq.add(e);
+            int newVertex = visited[v] ? w : v;
+            visited[newVertex] = true;
+
+            for (Edge e : graph.getAdj(newVertex)) {
+                if (!visited[e.getDest()]) {
+                    pq.offer(e);
+                    operationCount++;
                 }
             }
         }
+
+        long end = System.nanoTime();
+        executionTimeMs = (end - start) / 1_000_000;
     }
 
+    // === Методы для тестов ===
     public List<Edge> getMstEdges() {
         return mstEdges;
     }
 
     public double getTotalCost() {
         return totalCost;
+    }
+
+    public long getExecutionTimeMs() {
+        return executionTimeMs;
     }
 
     public int getOperationCount() {

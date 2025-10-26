@@ -1,7 +1,6 @@
 graph MST {
   node [shape=circle, style=filled, color=lightgray, fontname="Arial"];
 
-  // Все рёбра из графа
   A -- B [label="1"];
   A -- C [label="3"];
   B -- C [label="2"];
@@ -9,7 +8,6 @@ graph MST {
   C -- E [label="5"];
   D -- E [label="6"];
 
-  // Рёбра MST (выделены цветом)
   A -- B [color=red, penwidth=2.5];
   B -- C [color=red, penwidth=2.5];
   B -- D [color=red, penwidth=2.5];
