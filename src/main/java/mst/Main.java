@@ -6,8 +6,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String inputFile = "src/main/resources/input.json";
-        String outputFile = "src/main/resources/output.json";
+        String inputFile = "src/main/resources/input_large.json";
+        String outputFile = "src/main/resources/output_large.json";
 
         try {
             Gson gson = new Gson();
